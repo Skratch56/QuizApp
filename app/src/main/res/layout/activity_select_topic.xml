@@ -1,0 +1,430 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/activity_select_topic"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_vertical"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        tools:context="vut.mambane.quizapp.SelectTopic">
+
+        <!-- activity_info readylayout file -->
+        <!-- Clickable title -->
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/select_topic"
+            android:textSize="30sp"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"/>
+        <android.support.v7.widget.CardView
+android:onClick="onClick"
+            android:clickable="true"
+            android:id="@+id/titleWorld"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            card_view:cardCornerRadius="0dp"
+            card_view:cardElevation="14dp"
+            card_view:cardPreventCornerOverlap="true"
+            card_view:cardUseCompatPadding="true"
+            >
+
+            <FrameLayout
+                android:id="@+id/frmWorld"
+                android:onClick="onClick"
+                android:clickable="true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top"
+                >
+
+                <ImageView
+                    android:id="@+id/imgWorld"
+                    android:onClick="onClick"
+                    android:clickable="true"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:layout_gravity="left"
+                    android:src="@drawable/countries" />
+
+                <ImageView
+                    android:id="@+id/imgComplete1"
+                    android:onClick="onClick"
+                    android:clickable="true"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:layout_gravity="right"
+
+                    />
+
+
+
+
+            </FrameLayout>
+
+            <TextView
+                style="@style/TextAppearance.AppCompat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:clickable="true"
+                android:gravity="center"
+                android:onClick="onClick"
+                android:text="@string/places_around_the_world" />
+        </android.support.v7.widget.CardView>
+
+        <!--content to hide/show -->
+
+
+        <LinearLayout xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/layoutWorld"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/rootView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                card_view:cardCornerRadius="3dp"
+                card_view:cardElevation="14dp"
+                card_view:cardPreventCornerOverlap="true"
+                card_view:cardUseCompatPadding="true">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="0dp"
+                    android:orientation="vertical">
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:layout_gravity="top"
+                        android:background="@color/image_placeholder_background_color">
+
+                        <com.mikhaellopez.circularfillableloaders.CircularFillableLoaders
+                            android:id="@+id/circularFillableLoaders"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:src="@drawable/iconhighscore"
+                            app:cfl_border="true"
+                            app:cfl_border_width="2dp"
+                            app:cfl_progress="100"
+                            app:cfl_wave_amplitude="0.06"
+                            app:cfl_wave_color="#3f51b5" />
+
+                        <TextView
+                            android:id="@+id/txtScoreTotal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:gravity="left"
+                            android:text="Items test Text"
+                            android:textColor="@color/white"
+                            android:textSize="16sp" />
+
+                    </FrameLayout>
+
+                    <TextView
+                        android:id="@+id/tvItem"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginTop="5dp"
+                        android:gravity="center"
+                        android:layout_gravity="center"
+                        android:text="@string/do_you_know_which_place_it_is"
+                        android:textColor="@color/white"
+                        android:textSize="16sp" />
+
+                    <Button
+                        android:id="@+id/btnSubItem"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:text="@string/start_game"
+                        android:textColor="@color/white"
+                        android:layout_gravity="center"
+                        android:textSize="12sp"
+                        android:onClick="btnStartGameOnclick"/>
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+
+        </LinearLayout>
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/titleAnimal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:onClick="onClick"
+            card_view:cardCornerRadius="0dp"
+            card_view:cardElevation="14dp"
+            card_view:cardUseCompatPadding="true">
+
+
+            <FrameLayout
+                android:id="@+id/frmAnimal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top">
+
+                <ImageView
+                    android:id="@+id/imgAnimal"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:layout_gravity="left"
+                    android:src="@drawable/animals" />
+                <ImageView
+                    android:id="@+id/imgComplete2"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:layout_gravity="right"/>
+            </FrameLayout>
+
+            <TextView
+                style="@style/TextAppearance.AppCompat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:clickable="true"
+                android:gravity="center"
+                android:text="Animal Kingdom" />
+        </android.support.v7.widget.CardView>
+        <!--content to hide/show -->
+
+
+        <LinearLayout xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/layoutAnimal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/rootView2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                card_view:cardCornerRadius="3dp"
+                card_view:cardElevation="14dp"
+                card_view:cardPreventCornerOverlap="true"
+                card_view:cardUseCompatPadding="true">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="0dp"
+                    android:orientation="vertical">
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:layout_gravity="top"
+                        android:background="@color/image_placeholder_background_color">
+
+                        <com.mikhaellopez.circularfillableloaders.CircularFillableLoaders
+                            android:id="@+id/circularFillableLoaders2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:src="@drawable/iconhighscore"
+                            app:cfl_border="true"
+                            app:cfl_border_width="2dp"
+                            app:cfl_progress="100"
+                            app:cfl_wave_amplitude="0.06"
+                            app:cfl_wave_color="#00ba19" />
+                        <TextView
+                            android:id="@+id/txtScoreTotal2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:gravity="left"
+                            android:text="Items test Text"
+                            android:textColor="@color/white"
+                            android:textSize="16sp" />
+                    </FrameLayout>
+
+                    <TextView
+                        android:id="@+id/tvItem2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginTop="5dp"
+                        android:gravity="center"
+                        android:layout_gravity="center"
+                        android:text="Items test Text"
+                        android:textColor="@color/white"
+                        android:textSize="16sp" />
+
+                    <Button
+                        android:id="@+id/btnSubItem2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:text="Start Game"
+                        android:gravity="center"
+                        android:layout_gravity="center"
+                        android:textColor="@color/white"
+                        android:textSize="12sp"
+                        android:onClick="btnStartGameOnclick"/>
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+
+        </LinearLayout>
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/titleFamous"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:onClick="onClick"
+            card_view:cardCornerRadius="0dp"
+            card_view:cardElevation="14dp"
+            card_view:cardPreventCornerOverlap="true"
+            card_view:cardUseCompatPadding="true">
+
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top">
+
+                <ImageView
+                    android:id="@+id/imgFamous"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:layout_gravity="left"
+                    android:src="@drawable/star" />
+                <ImageView
+                    android:id="@+id/imgComplete3"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:layout_gravity="right"/>
+            </FrameLayout>
+
+            <TextView
+                style="@style/TextAppearance.AppCompat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:clickable="true"
+                android:gravity="center"
+                android:text="Famous people" />
+        </android.support.v7.widget.CardView>
+        <!--content to hide/show -->
+
+
+        <LinearLayout xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/layoutFamous"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/rootView3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                card_view:cardCornerRadius="3dp"
+                card_view:cardElevation="14dp"
+                card_view:cardPreventCornerOverlap="true"
+                card_view:cardUseCompatPadding="true">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="0dp"
+                    android:orientation="vertical">
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:layout_gravity="top"
+                        android:background="@color/image_placeholder_background_color">
+
+                        <com.mikhaellopez.circularfillableloaders.CircularFillableLoaders
+                            android:id="@+id/circularFillableLoaders3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:src="@drawable/iconhighscore"
+                            app:cfl_border="true"
+                            app:cfl_border_width="2dp"
+                            app:cfl_progress="100"
+                            app:cfl_wave_amplitude="0.06"
+                            app:cfl_wave_color="#ffeb0c" />
+                        <TextView
+                            android:id="@+id/txtScoreTotal3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:gravity="left"
+                            android:text="Items test Text"
+                            android:textColor="@color/white"
+                            android:textSize="16sp" />
+                    </FrameLayout>
+
+                    <TextView
+                        android:id="@+id/tvItem3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginTop="5dp"
+                        android:text="Items test Text"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
+                        android:layout_gravity="center"
+                        android:gravity="center"/>
+
+                    <Button
+                        android:id="@+id/btnSubItem3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:text="@string/items_test_text"
+                        android:textColor="@color/white"
+                        android:textSize="12sp"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:onClick="btnStartGameOnclick"/>
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

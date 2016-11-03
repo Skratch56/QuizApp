@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="vut.mambane.quizapp.MainActivity">
+
+    <uk.co.barbuzz.beerprogressview.BeerProgressView
+        android:id="@+id/beerProgressView"
+        app:beerColor="#EFA601"
+        app:beerProgress="0"
+        app:waveMax="100"
+        app:bubbleColor="#B67200"
+        app:waveAmplitude="3dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="visible"/>
+</RelativeLayout>
