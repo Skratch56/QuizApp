@@ -32,7 +32,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class GamePlayActivity extends AppCompatActivity {
-
+    //Global declarations for variables which will be used in more than one method.
     MyDBHandler dbHandler;
     int _id;
     private Button btn1, btn2, btn3, btn4, btnSubmit;
@@ -63,6 +63,7 @@ public class GamePlayActivity extends AppCompatActivity {
         return array;
     }
 
+    //The first method to be run. It runs when the Activity is created. This is where I instatiated the code.
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -102,9 +103,11 @@ public class GamePlayActivity extends AppCompatActivity {
         imgQuestion = (ImageView) findViewById(R.id.imgQuestion);
 
         avi = (AVLoadingIndicatorView) findViewById(R.id.avi);
-
+        //the method below calls the Quiz class and initialises the questions
         Quiz.initialise();
+
         arQuestion = new ArrayList<>();
+        //Now the initialised questions are stored in the Questions array.
         arQuestion = Quiz.getAll();
 
         avi.setVisibility(View.GONE);
@@ -113,6 +116,9 @@ public class GamePlayActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * The method below allows me to manipulate the action bar and display a score icon and the score on the actionbar
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.items, menu);
@@ -141,6 +147,8 @@ public class GamePlayActivity extends AppCompatActivity {
             txtStats.setText("Score " + score + "\n");
             txtStats.append("Correct answers " + score + "\n");
             txtStats.append("Incorrect answers " + (arQuestion.size() + 1 - score));
+
+            //Tests to see if the aqcuired score is greater than the on in the database. If it is the it updates the score.
             if (dbHandler.getScore(_id) < score) {
                 dbHandler.updateScore(_id, score);
             }
@@ -385,12 +393,13 @@ public class GamePlayActivity extends AppCompatActivity {
      * This method receives parameters then checks to see if the selected answer or answers are correct.
      * If they are correct the variable score is increased by 1.
      * If it is not correct the phone will vibrate then the button with the correct answer will start flashing green. After 5 seconds a new question will be called
-     * A timer will also be counting down while
-     *
+     * A timer will also be counting down while the user thinks of an answer. If the timer runs out the user will be told the time has run out and then the user will wait 5 seconds before the next question is loaded.
      */
     public void gamePlay(final String answer, final String answer2, String type) {
         final String btnAnswer = this.answer;
+        //Checks to see type is not a checkbox
         if (!type.equals("checkboxes")) {
+            //checks for a button or radio button
             if (this.answer.equals(answer)) {
                 score += 1;
                 countTime.cancel();
@@ -403,6 +412,7 @@ public class GamePlayActivity extends AppCompatActivity {
                 countTime.cancel();
                 disableControls();
                 if (type == "button") {
+                    //Flashes the correct answers green
                     new CountDownTimer(4000, 500) {
 
                         public void onTick(long millisUntilFinished) {
@@ -438,6 +448,7 @@ public class GamePlayActivity extends AppCompatActivity {
                     }.start();
 
                 } else if (type == "radiobuttons") {
+                    //Flashes the correct answer green
                     new CountDownTimer(4000, 500) {
 
                         public void onTick(long millisUntilFinished) {
@@ -469,7 +480,7 @@ public class GamePlayActivity extends AppCompatActivity {
             }
         } else {
             int checkCorrect = 0;
-
+            //checks for a checkbox
             if (answer == checkedAnswer1 || answer2 == checkedAnswer1) {
                 score += 1;
                 checkCorrect += 1;
@@ -505,13 +516,13 @@ public class GamePlayActivity extends AppCompatActivity {
 
 
             if (checkCorrect != 2) {
-                //score -= 1;
+
                 countTime.cancel();
                 scoreItem.setTitle(score + "");
                 Toast.makeText(this, "Wrong", Toast.LENGTH_LONG).show();
                 vibrator.vibrate(200);
-                //getQuestion();
 
+                //Flashes the correct answers green
                 new CountDownTimer(4000, 500) {
 
                     public void onTick(long millisUntilFinished) {
@@ -555,7 +566,7 @@ public class GamePlayActivity extends AppCompatActivity {
     }
 
     /**
-     * Created by CE on 2016-10-10.
+     * Disbles the controls used to answer questions
      */
     public void disableControls() {
 
@@ -573,7 +584,7 @@ public class GamePlayActivity extends AppCompatActivity {
     }
 
     /**
-     * Created by CE on 2016-10-10.
+     * Enables the controls used to answer questions
      */
     public void enableControls() {
 

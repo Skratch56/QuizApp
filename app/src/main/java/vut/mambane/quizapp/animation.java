@@ -5,9 +5,6 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 
-/**
- * Created by CE on 2016-10-21.
- */
 
 public class animation {
     public static void slide_down(Context ctx, View v){
