@@ -106,7 +106,6 @@ public class GamePlayActivity extends AppCompatActivity {
         Quiz.initialise();
         arQuestion = new ArrayList<>();
         arQuestion = Quiz.getAll();
-        //getQuestion();
 
         avi.setVisibility(View.GONE);
         txtQuestion.setText("Press Start game to begin");
@@ -122,6 +121,9 @@ public class GamePlayActivity extends AppCompatActivity {
         return super.onCreateOptionsMenu(menu);
     }
 
+    /**
+     * This method checks to see if the selected question hasn't already been selected because the getQuestion method randomly gets questions.
+     */
     public void loopReturn(boolean exists) {
         if (questionCount != 8) {
             if (exists) {
@@ -146,6 +148,11 @@ public class GamePlayActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * This method determines the range at which the questions will be fetched from the Questions Array.
+     * It then gets the question from the Array and checks if the question has already been asked.
+     * If the question has been asked it gets runs the loop return method. If it hasn't it displays the question along with it's picture and set of widgets.
+     */
     public void getQuestion() {
 
         Boolean exists;
@@ -199,10 +206,9 @@ public class GamePlayActivity extends AppCompatActivity {
         } else {
             String imageName = arQuestion.get(index).getImage();
             int resID = getResources().getIdentifier(imageName, "drawable", getPackageName());
-            //Drawable drawable = getResources().getDrawable(resID);
+
             Picasso.with(this).load(resID).into(imgQuestion);
 
-            //imgQuestion.setImageDrawable(drawable);
         }
 
         txtQuestion.setText(question);
@@ -247,6 +253,9 @@ public class GamePlayActivity extends AppCompatActivity {
         }.start();
     }
 
+    /**
+     * This method disables all the views(Linear Layouts) that contain the controls allowing the user to answer the questions
+     */
     public void disableViews() {
         layoutCheckBoxes1.setVisibility(View.GONE);
         layoutCheckBoxes2.setVisibility(View.GONE);
@@ -258,10 +267,16 @@ public class GamePlayActivity extends AppCompatActivity {
         //txtTimer.setVisibility(View.GONE);
     }
 
+    /**
+     * This method enables the views(Linear Layouts) that contain the controls allowing the user to answer the questions depending on what value the parameter type contains.
+     * If parameter type has the value "button" this method displays the button layouts and sets the button text to the values in the arAnswers parameter.
+     * If parameter type has the value "radiobuttons" it enables the radio button  controls which has the Values True or False
+     * If parameter type has the value "checkboxes" it enables the check boc controls which allows the user to answer multiple choice questions
+     */
     public void initialiseControls(String[] arAnswers, String type) {
-
+        //All the controls are first disabled
         disableViews();
-
+        //checks the type parameter then enables the required controls.
         if (type.equals("button")) {
             layoutButtons1.setVisibility(View.VISIBLE);
             layoutButtons2.setVisibility(View.VISIBLE);
@@ -297,21 +312,32 @@ public class GamePlayActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * This method is executed when a radio button is clicked. When it is clicked it checks which button is clicked and assigns true or false to the selected answer variable depending on the selected button
+     */
     public void rdoOnClick(View view) {
-
+        //checks which button was clicked
         if (view.getId() == rdoTrue.getId()) {
             selectedAnswer = "True";
         } else {
             selectedAnswer = "False";
         }
+        //launches the gamemplay methid and passes in its parameters.
         gamePlay(selectedAnswer, answer, "radiobuttons");
     }
 
+    /**
+     * Is executed when a submit button is clicked
+     * Since the check boxes allow the user to select multiple answers I couldn't allow this method to be excecuted when a checkbox button is clicked
+     * Thus I added a "Submit" button which when clicked checks to see which CheckBox button is clicked.
+     */
     public void btnSubmitOnClick(View view) {
+        //If the submit button has the text start game it'll restart and get the question then change the button text to Submit
         if (btnSubmit.getText() == "Start Game") {
             getQuestion();
             btnSubmit.setText("Submit");
         } else {
+            //Checks the checkbox buttons to see which one is clicked then assigns the text to the CheckedAnswer Variable if it is not selected it assigns an empty answer
             if (chk1.isChecked()) {
                 checkedAnswer1 = chk1.getText().toString();
             } else {
@@ -332,13 +358,16 @@ public class GamePlayActivity extends AppCompatActivity {
             } else {
                 checkedAnswer4 = "";
             }
-
+            //launches the gamemplay method and passes in its parameters.
             gamePlay(this.answer, this.answer2, "checkboxes");
         }
     }
 
+    /**
+     * Is executed when a button is clicked. It assigns the selected buttons text to the selectedAnswer variable
+     */
     public void btnOnClick(View view) {
-
+        //Checks which button is selected then assigns the button text to the selectedAnswer variable
         if (view.getId() == btn1.getId()) {
             selectedAnswer = btn1.getText().toString();
         } else if (view.getId() == btn2.getId()) {
@@ -348,9 +377,17 @@ public class GamePlayActivity extends AppCompatActivity {
         } else if (view.getId() == btn4.getId()) {
             selectedAnswer = btn4.getText().toString();
         }
+        //launches the gamemplay method and passes in its parameters.
         gamePlay(selectedAnswer, null, "button");
     }
 
+    /**
+     * This method receives parameters then checks to see if the selected answer or answers are correct.
+     * If they are correct the variable score is increased by 1.
+     * If it is not correct the phone will vibrate then the button with the correct answer will start flashing green. After 5 seconds a new question will be called
+     * A timer will also be counting down while
+     *
+     */
     public void gamePlay(final String answer, final String answer2, String type) {
         final String btnAnswer = this.answer;
         if (!type.equals("checkboxes")) {
@@ -517,7 +554,9 @@ public class GamePlayActivity extends AppCompatActivity {
 
     }
 
-
+    /**
+     * Created by CE on 2016-10-10.
+     */
     public void disableControls() {
 
         btn1.setEnabled(false);
@@ -533,6 +572,9 @@ public class GamePlayActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Created by CE on 2016-10-10.
+     */
     public void enableControls() {
 
         btn1.setEnabled(true);
