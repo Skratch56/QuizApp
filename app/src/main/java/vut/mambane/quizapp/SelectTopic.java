@@ -61,7 +61,9 @@ public class SelectTopic extends AppCompatActivity {
                     }
 
                     public void onFinish() {
-                        circularFillableLoaders.setProgress(100 - (dbHandler.getScore(1)*100));
+
+                        int sk =dbHandler.getScore(1);
+                        circularFillableLoaders.setProgress(100 - (sk * 10));
                     }
 
                 }.start();

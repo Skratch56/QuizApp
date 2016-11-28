@@ -2,9 +2,7 @@ package vut.mambane.quizapp;
 
 import java.util.ArrayList;
 
-/**
- * Created by CE on 2016-10-10.
- */
+
 
 public class QuizDA {
     private static ArrayList<Quiz> arQuiz;
@@ -31,12 +29,12 @@ public class QuizDA {
         arQuiz.add(new Quiz("This animal is the fastest land animal", "True", "Amphibians", "Plants", "Insects", "button", "cheetah"));
         arQuiz.add(new Quiz("This animal is the fastest land animal", "True", "Amphibians", "Plants", "Insects", "button", "cheetah"));
 
-        arQuiz.add(new Quiz("Lizards are also part of which subgroup", "Reptiles", "Amphibians", "Plants", "Insects", "button", "lizards"));
-        arQuiz.add(new Quiz("This animal is the fastest land animal", "True", "Amphibians", "Plants", "Insects", "button", "cheetah"));
-        arQuiz.add(new Quiz("This animal is the fastest land animal", "True", "Amphibians", "Plants", "Insects", "button", "cheetah"));
-        arQuiz.add(new Quiz("This animal is the fastest land animal", "True", "Amphibians", "Plants", "Insects", "button", "cheetah"));
-        arQuiz.add(new Quiz("This animal is the fastest land animal", "True", "Amphibians", "Plants", "Insects", "button", "cheetah"));
-        arQuiz.add(new Quiz("This animal is the fastest land animal", "True", "Amphibians", "Plants", "Insects", "button", "cheetah"));
+        arQuiz.add(new Quiz("Who is she?", "Nandi Mngoma", "Boity Thulo", "Pearl Thusi", "Minnie Dlamini", "button", "nandi"));
+        arQuiz.add(new Quiz("This man filled up the dome", "False", "Amphibians", "Plants", "Insects", "radiobuttons", "aka"));
+        arQuiz.add(new Quiz("This man was a part of malaika", "False", "Amphibians", "Plants", "Insects", "radiobuttons", "ko"));
+        arQuiz.add(new Quiz("Select this mans first name and last name", "Refiloe", "Phoolo", "Plants", "Insects", "checkboxes", "cassper"));
+        arQuiz.add(new Quiz("This man recently won his first Oscar", "Leonardo Di'Caprio", "Leonardo Da'Vinci", "Jim Parsons", "Jeff Dunham", "button", "leo"));
+        arQuiz.add(new Quiz("", "True", "Amphibians", "Plants", "Insects", "button", "cheetah"));
         arQuiz.add(new Quiz("This animal is the fastest land animal", "True", "Amphibians", "Plants", "Insects", "button", "cheetah"));
         arQuiz.add(new Quiz("This animal is the fastest land animal", "True", "Amphibians", "Plants", "Insects", "button", "cheetah"));
     }

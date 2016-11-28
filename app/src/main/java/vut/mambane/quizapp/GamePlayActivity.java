@@ -71,6 +71,14 @@ public class GamePlayActivity extends AppCompatActivity {
         dbHandler = new MyDBHandler(this);
         arIndex = new ArrayList<>();
         _id = getIntent().getIntExtra("_id", 0);
+        if (_id == 1){
+            getSupportActionBar().setSubtitle("Around the world");
+        }else if (_id ==2){
+            getSupportActionBar().setSubtitle("Animal Kingdom");
+        }else if (_id == 3){
+            getSupportActionBar().setSubtitle("Famous People");
+        }
+
         vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
 
         chk1 = (CheckBox) findViewById(R.id.chk1);
@@ -166,13 +174,16 @@ public class GamePlayActivity extends AppCompatActivity {
         Boolean exists;
         int index, maxi = 0, min = 0;
         if (_id == 1) {
+
             maxi = 8;
             min = 0;
         } else if (_id == 2) {
+
             maxi = 16;
             min = 8;
 
         } else if (_id == 3) {
+
             maxi = 24;
             min = 16;
         }
